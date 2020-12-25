@@ -2,10 +2,9 @@ name: CICD
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
-
+    branches: [master]
 
 jobs:
   build-test:
@@ -19,7 +18,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      
+
       # Install dependencies, lint
       - name: Install dependecies
         run: npm ci
@@ -28,15 +27,15 @@ jobs:
           npm run test:other
           npm run test:code
           npm run test:typecheck
-              
+
       # Build docker
       - name: Build docker image
         run: docker build -t excalidraw .
-          
+
       # Test
       - name: Test
         run: npm run test:app
-  
+
   deploy:
     name: CD Pipeline
     runs-on: ubuntu-latest
