@@ -80,6 +80,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: excalidraw-service
-          cluster: excalidraw-cluster
+          service: ExcalidrawService
+          cluster: ExcalidrawCluster
           wait-for-service-stability: true
